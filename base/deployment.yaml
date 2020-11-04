@@ -17,7 +17,7 @@ spec:
         app: <%= config.projectName%>
     spec:
       containers:
-        - name: itrconfig-ui
+        - name: <%= config.projectName%>
           image: sfhcm.docker.repositories.sapcdn.io/<%= config.projectName%>:latest
           imagePullPolicy: Always
           ports:
