@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: <%= config.projectName%>-ingress
+spec:
+  tls:
+    - hosts:
+        - platformcockpit.devcluster.cksdc25.c.eu-de-1.cloud.sap
+      secretName: devclustertls
+  rules:
+    - host: platformcockpit.devcluster.cksdc25.c.eu-de-1.cloud.sap
+      http:
+        paths:
+          - path: /<%= config.route%>
+            backend:
+              serviceName: <%= config.projectName%>-svc-sit
+              servicePort: 8080

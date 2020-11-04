@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <%= config.projectName%>-deploy
+  labels:
+    app: <%= config.projectName%>
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: <%= config.projectName%>
+    spec:
+      containers:
+        - name: itrconfig-ui
+          image: sfhcm.docker.repositories.sapcdn.io/<%= config.projectName%>:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          resources:
+            requests:
+              memory: "1Gi"
+            limits:
+              memory: "2Gi"
+      imagePullSecrets:
+        - name: sfhcm-regcred
