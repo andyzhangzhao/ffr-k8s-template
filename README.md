@@ -1,1 +1,1 @@
-# <%= confg.projectName%>
+# <%= config.projectName%>
