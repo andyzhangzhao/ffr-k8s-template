@@ -2,15 +2,13 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: <%= config.projectName%>-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   tls:
     - hosts:
-        - <%= config.projectName%>.devcluster.cksdc25.c.eu-de-1.cloud.sap
+        - devportal-mf.devcluster.cksdc25.c.eu-de-1.cloud.sap
       secretName: devclustertls
   rules:
-    - host: <%= config.projectName%>.devcluster.cksdc25.c.eu-de-1.cloud.sap
+    - host: devportal-mf.devcluster.cksdc25.c.eu-de-1.cloud.sap
       http:
         paths:
           - path: /<%= config.route%>
