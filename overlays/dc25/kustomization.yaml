@@ -2,11 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 commonLabels:
   env: dc25
-namespace: <%= config.k8sNameSpace%>
+namespace: devportal
 images:
   - name: <%= config.projectName%>
     newName: sfhcm.docker.repositories.sapcdn.io/<%= config.projectName%>
-    newTag: master_20200811060043-3c9cf85-4
+    newTag: latest
 resources:
   - ingress.yaml
 bases:
